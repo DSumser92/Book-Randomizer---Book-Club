@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Randomizer</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, black, purple);
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #ddd;
+  }
+</style>
+</head>
+<body>
+
+<script>
+function generateRandomBook() {
+    var bookTitles = [];
+    var numTitles = prompt("How many book titles do you want to enter? (2-10)");
+
+    // Validate user input for the number of titles
+    while (numTitles < 2 || numTitles > 10 || isNaN(numTitles)) {
+        numTitles = prompt("Please enter a valid number of book titles (2-10):");
+    }
+
+    // Prompt user to enter book titles
+    for (var i = 0; i < numTitles; i++) {
+        var title = prompt("Enter book title #" + (i + 1) + ":");
+        bookTitles.push(title);
+    }
+
+    // Randomly select a book title
+    var randomIndex = Math.floor(Math.random() * bookTitles.length);
+    var randomBook = bookTitles[randomIndex];
+
+    // Display the randomly selected book title
+    alert("You should read: " + randomBook);
+}
+</script>
+
+<button onclick="generateRandomBook()">Generate Random Book</button>
+
+</body>
+</html>
+
